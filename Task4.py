@@ -20,12 +20,12 @@ def increment():
     global i
     i = i + 1
 
-@app.post('/patient', response_model=NumerizedPatient)
+@app.post('/patient', response_model=PatientResp)
 def post_patient(p: Patient):
     global i
     increment()
     patients.append(p)
-    return NumerizedPatient(id=i, patient = p)
+    return PatientResp(id=i, patient = p)
 
 @app.get('/patient/{pk}', response_model=Patient)
 def send_patient(pk: int):
